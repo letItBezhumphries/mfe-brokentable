@@ -1,1 +1,1 @@
-# mfe-brokentable
+# microfrontend-brokentable
