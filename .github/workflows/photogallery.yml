@@ -7,11 +7,11 @@ on:
     branches:
       - master
     paths:
-      - "packages/FEC-Photogallery/**"
+      - "packages/photogallery/**"
 
 defaults:
   run:
-    working-directory: packages/FEC-Photogallery/
+    working-directory: packages/photogallery/
 
 jobs:
   build:
