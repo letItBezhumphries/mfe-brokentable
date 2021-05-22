@@ -7,11 +7,11 @@ on:
     branches:
       - master
     paths:
-      - "packages/FEC-Restaurant-Info-Module/**"
+      - "packages/restaurants/**"
 
 defaults:
   run:
-    working-directory: packages/FEC-Restaurant-Info-Module/
+    working-directory: packages/restaurants/
 
 jobs:
   build:

@@ -7,11 +7,11 @@ on:
     branches:
       - master
     paths:
-      - "packages/FEC-Reviews-Module/**"
+      - "packages/reviews/**"
 
 defaults:
   run:
-    working-directory: packages/FEC-Reviews-Module/
+    working-directory: packages/reviews/
 
 jobs:
   build:
