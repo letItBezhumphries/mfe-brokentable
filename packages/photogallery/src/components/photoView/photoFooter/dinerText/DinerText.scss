@@ -1,0 +1,26 @@
+.photo-diner-text {
+  color: #fff;
+  display: flex;
+
+  max-width: 90%;
+  height: 17.7778px;
+  position: relative;
+  margin-right: 4px;
+}
+
+.diner-image-box {
+  height: 53.333px;
+  width: 50px;
+}
+
+.diner-text-box {
+  margin-left: 4px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.photo-dined-on-date {
+  margin-left: 4px;
+}

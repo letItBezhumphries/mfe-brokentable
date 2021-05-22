@@ -1,0 +1,63 @@
+.report-photo-popup {
+  display: hidden;
+  background-color: #ffff;
+  position: absolute;
+  width: 40rem;
+  right: 0;
+  left: 0;
+  top: 20rem;
+  margin: auto;
+  border-color: rgba(0, 0, 0, 0.0783414);
+  border-style: solid;
+  border-width: 0.67px;
+  border-radius: 3px;
+  padding-bottom: 1.6rem;
+  z-index: 1003;
+}
+
+.showPopup-true {
+  display: flex;
+  flex-direction: column;
+}
+
+.report-photo-header {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+  border-bottom-style: solid;
+  border-bottom-width: 1.1111px;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 2.3rem;
+  padding: 1.6rem;
+}
+
+.popup-btn {
+  align-items: center;
+  appearance: none;
+  border-radius: 3px;
+  border-style: none;
+  border-width: 0px;
+  cursor: default;
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin: 5px 20px;
+  text-align: center;
+  width: 90%;
+  height: 36.94px;
+}
+
+.dark {
+  background-color: rgb(97, 189, 219);
+  border-color: rgb(43, 154, 191);
+  color: #fff;
+  &:hover {
+    background-color: rgb(63, 125, 197);
+  }
+}
+
+.light {
+  background-color: #fff;
+  color: rgb(43, 154, 191);
+  &:hover {
+    background-color: lightgray;
+  }
+}

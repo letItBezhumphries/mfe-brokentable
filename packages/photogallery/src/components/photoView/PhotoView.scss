@@ -1,0 +1,32 @@
+.scroller-wrapper {
+  display: block;
+  position: static;
+  overflow-x: hidden;
+  height: 610px;
+  width: 610px;
+}
+
+.scroller-row {
+  display: block;
+  position: relative;
+  height: 100%;
+  width: auto;
+}
+
+.scroller-column {
+  display: flex;
+  flex-direction: column;
+  height: 610px;
+  width: 610px;
+  justify-content: center;
+  align-items: center;
+}
+
+.current-photo {
+  align-self: center;
+  max-height: 526px;
+  max-width: 526px;
+  display: block;
+  margin-left: 31px;
+  margin-right: 31px;
+}

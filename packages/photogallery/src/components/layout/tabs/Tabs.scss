@@ -1,0 +1,39 @@
+.tabs {
+  text-align: left;
+  max-height: 12.59%;
+}
+
+.tab-list {
+  padding-left: 0;
+  border-bottom-color: rgb(216, 217, 219);
+  border-bottom-style: solid;
+  border-bottom-width: 1.1111px;
+  height: 100%;
+  width: 60.8rem;
+  line-height: 1.84rem;
+  display: flex;
+  align-items: center;
+  padding-top: 1.6rem;
+}
+
+.tab-list-item {
+  display: inline-block;
+  list-style: none;
+  font-size: 1.4rem;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.61rem;
+  padding-bottom: 1.6rem;
+  margin-right: 50px;
+  align-self: stretch;
+
+  &:hover {
+    border-bottom: 1.5px solid;
+    border-bottom-color: black;
+  }
+}
+
+.tab-list-active {
+  border-bottom: 2px solid;
+  color: red;
+}

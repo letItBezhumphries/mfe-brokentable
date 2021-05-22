@@ -1,0 +1,38 @@
+.gallery-scroller {
+  position: relative;
+  min-height: 640px;
+  min-width: 660px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo-scroller-container {
+  overflow: hidden;
+  position: static;
+  margin: 0px;
+  padding: 0px;
+  width: 610px;
+  height: 610px;
+}
+
+
+.arrow-btn {
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  height: 25px;
+  width: 31px;
+  padding: 1px 6px;
+  cursor: pointer;
+}
+
+.arrow-btn-icon {
+  fill: rgb(145, 148, 158);
+  height: 25px;
+  width: 25px;
+  &:hover {
+    fill: rgb(111, 115, 123);
+  }
+}
