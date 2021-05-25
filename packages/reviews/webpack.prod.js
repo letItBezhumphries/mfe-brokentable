@@ -17,14 +17,11 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 const prodConfig = {
   mode: 'production',
-  devtool: {
-    type: "source-map"
-  },
+  devtool: "source-map",
   output: {
     filename: 'bundle.[contenthash].js',
     path: DIST_DIR,
     publicPath: "/reviews/latest/",
-    // publicPath: 'http://localhost:1337/',
     assetModuleFilename: 'assets/[name][contenthash][ext]'
   },
   module: {

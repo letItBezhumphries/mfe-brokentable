@@ -19,9 +19,7 @@ const domain = process.env.PRODUCTION_DOMAIN
 
 const prodConfig = {
   mode: "production",
-  devtool: {
-    type: "source-map"
-  },
+  devtool: "source-map",
   output: {
     filename: "main.[contenthash].js",
     path: DIST_DIR,
