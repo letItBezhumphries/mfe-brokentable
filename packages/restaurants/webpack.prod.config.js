@@ -75,10 +75,10 @@ const prodConfig = {
       filename: "index.html",
       title: "Restaurant Info Page"
     }),
-    new Dotenv({
-      path: "./.env",
-      allowEmptyValues: true,
-    }),
+    // new Dotenv({
+    //   path: "./.env",
+    //   allowEmptyValues: true,
+    // }),
     new ESLintPlugin({
       fix: true,
     }),
