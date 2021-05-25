@@ -72,10 +72,10 @@ const prodConfig = {
       template: './public/index.html',
       filename: 'index.html'
     }),
-    new Dotenv({
-      path: './.env',
-      allowEmptyValues: true
-    }),
+//     new Dotenv({
+//       path: './.env',
+//       allowEmptyValues: true
+//     }),
     new ESLintPlugin({
       fix: true
     }),
