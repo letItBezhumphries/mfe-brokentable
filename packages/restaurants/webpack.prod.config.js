@@ -1,17 +1,12 @@
 const path = require('path');
-// const glob = require("glob");
 const { merge } = require('webpack-merge');
-// const PurgeCSSPlugin = require("purgecss-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const Dotenv = require('dotenv-webpack');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const { ModuleFederationPlugin } = require("webpack").container;
 const commonConfig = require('./webpack.common');
 var DIST_DIR = path.join(__dirname, "/public/dist");
-// const ALL_FILES = glob.sync(path.join(__dirname, "client/src/*.js"));
 const packageJson = require('./package.json');
 const TerserPlugin = require('terser-webpack-plugin');
 
@@ -70,11 +65,6 @@ const prodConfig = {
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: ["**/*"],
     }),
-    new HtmlWebpackPlugin({
-      template: "./public/index.html",
-      filename: "index.html",
-      title: "Restaurant Info Page"
-    }),
     // new Dotenv({
     //   path: "./.env",
     //   allowEmptyValues: true,
@@ -90,27 +80,7 @@ const prodConfig = {
       },
       shared: packageJson.dependencies
     }),
-    // new PurgeCSSPlugin({
-    //   paths: ALL_FILES,
-    //   extractors: [
-    //     {
-    //       extractor: (content) => content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || [],
-    //       extensions: ["html"],
-    //     },
-    //   ],
-    // }),
   ],
-  // optimization: { 
-  //   minimizer: [
-  //     new TerserPlugin(),
-  //     new CssMinimizerPlugin({
-  //       minimizerOptions: { preset: ["default"] },
-  //     }),
-  //   ],
-  //   splitChunks: {
-  //     chunks: "all",
-  //   },
-  // }, 
 };
 
 module.exports = merge(commonConfig, prodConfig);

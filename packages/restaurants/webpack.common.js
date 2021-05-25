@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 var SRC_DIR = path.join(__dirname, "/client/src");
 
 module.exports = {
@@ -31,4 +32,11 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./public/index.html",
+      // filename: "index.html",
+      title: "Restaurant Info Page"
+    }),
+  ]
 };
