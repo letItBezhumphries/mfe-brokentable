@@ -36,7 +36,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./public/index.html",
       // filename: "index.html",
-      title: "Restaurant Info Page"
+      title: "Restaurant Info Page",
+      inject: "body"
     }),
   ]
 };
