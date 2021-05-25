@@ -21,7 +21,6 @@ const prodConfig = {
     filename: 'bundle.[contenthash].js',
     path: DIST_DIR,
     publicPath: "/photogallery/latest/",
-    // publicPath: 'http://localhost:3003/',
     assetModuleFilename: 'assets/[name][contenthash][ext]'
   },
   devtool: "source-map",
