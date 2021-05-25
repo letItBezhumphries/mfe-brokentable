@@ -1,17 +1,17 @@
 const path = require('path');
-const glob = require("glob");
+// const glob = require("glob");
 const { merge } = require('webpack-merge');
-const PurgeCSSPlugin = require("purgecss-webpack-plugin");
+// const PurgeCSSPlugin = require("purgecss-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+// const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
+// const Dotenv = require('dotenv-webpack');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const { ModuleFederationPlugin } = require("webpack").container;
 const commonConfig = require('./webpack.common');
 const DIST_DIR = path.join(__dirname, '/public/dist');
-const ALL_FILES = glob.sync(path.join(__dirname, "client/src/*.jsx"));
+// const ALL_FILES = glob.sync(path.join(__dirname, "client/src/*.jsx"));
 const packageJson = require('./package.json');
 const TerserPlugin = require('terser-webpack-plugin');
 
@@ -87,27 +87,27 @@ const prodConfig = {
       },
       shared: packageJson.dependencies,
     }),
-    new PurgeCSSPlugin({
-      paths: ALL_FILES,
-      extractors: [
-        {
-          extractor: (content) => content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || [],
-          extensions: ["html"],
-        },
-      ],
-    }),
+    // new PurgeCSSPlugin({
+    //   paths: ALL_FILES,
+    //   extractors: [
+    //     {
+    //       extractor: (content) => content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || [],
+    //       extensions: ["html"],
+    //     },
+    //   ],
+    // }),
   ],
-  optimization: { 
-    minimizer: [
-      new TerserPlugin(),
-      new CssMinimizerPlugin({
-        minimizerOptions: { preset: ["default"] },
-      }),
-    ],
-    splitChunks: {
-      chunks: "all",
-    },
-  }, 
+  // optimization: { 
+  //   minimizer: [
+  //     new TerserPlugin(),
+  //     new CssMinimizerPlugin({
+  //       minimizerOptions: { preset: ["default"] },
+  //     }),
+  //   ],
+  //   splitChunks: {
+  //     chunks: "all",
+  //   },
+  // }, 
 };
 
 module.exports = merge(commonConfig, prodConfig);

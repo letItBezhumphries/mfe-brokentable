@@ -1,12 +1,12 @@
 const path = require('path');
-const glob = require("glob");
+// const glob = require("glob");
 const { merge } = require('webpack-merge');
 // const PurgeCSSPlugin = require("purgecss-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
+// const Dotenv = require('dotenv-webpack');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const { ModuleFederationPlugin } = require("webpack").container;
 const commonConfig = require('./webpack.common');
