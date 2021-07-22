@@ -1,0 +1,27 @@
+.navtab-link {
+  margin-right: 2rem;
+  text-align: center;
+  align-self: stretch;
+  border: none;
+  color: black;
+  text-decoration-line: none;
+  padding-top: 1.5rem;
+  display: inline-block;
+}
+
+.navtab-link:hover {    
+  border-bottom: 1.15px solid red;
+  color: red;
+  text-decoration-line: none;
+}
+
+.navtab-active {
+  margin-right: 2rem;
+  text-align: center;
+  align-self: stretch;
+  color: red;
+  text-decoration-line: none;
+  border-bottom: 1.15px solid red;
+  display: inline-block;
+  padding-top: 1.5rem;  
+}

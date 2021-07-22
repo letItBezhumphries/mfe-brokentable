@@ -1,0 +1,22 @@
+.top-bar-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 2.5rem;
+  padding: 0 1.6rem;
+  background-color: #f7f7f7;
+}
+
+.top-bar-link {
+  font-size: 1.2rem;
+  color: #717171;
+  text-decoration: none;
+}
+
+.top-bar-language-link {
+  font-size: 1.2rem;
+  color: #717171;
+  text-decoration: none;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}

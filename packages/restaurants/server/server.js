@@ -3,39 +3,46 @@ const express = require("express");
 const http = require("http");
 const createError = require("http-errors");
 const path = require("path");
+const cors = require("cors");
 const mysql = require("mysql");
 const errorHandler = require("errorhandler");
 const DIST_DIR = path.join(__dirname, "../public/dist");
 const db = require("./db");
-
 const app = express();
+
 app.use(
   express.json({
     extended: false,
   })
 );
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
 
-app.use(express.static(DIST_DIR));
-
-const connection = mysql.createConnection({
-  host: process.env.RDS_HOST,
-  port: process.env.RDS_PORT,
-  user: process.env.RDS_USERNAME,
-  password: process.env.RDS_PASSWORD,
-  database: process.env.DB_NAME,
-});
-
-// const connection = mysql.createConnection({
-//   host: "localhost",
-//   user: "eric",
-//   password: "chalon",
-//   database: "restaurant_details",
+app.use(cors());
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
 // });
+// Cross-Origin-Embedder-Policy: require-corp
+// Cross-Origin-Opener-Policy: same-origin
+
+let connection;
+
+if (process.env.NODE_ENV !== "production") {
+  connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'eric',
+    password: 'chalon',
+    database: 'restaurant_details'
+  });
+} else {
+  connection = mysql.createConnection({
+    host: process.env.RDS_HOST,
+    port: process.env.RDS_PORT,
+    user: process.env.RDS_USERNAME,
+    password: process.env.RDS_PASSWORD,
+    database: process.env.DB_NAME,
+  });
+}
 
 connection.connect((err) => {
   if (err) throw err;
@@ -88,17 +95,38 @@ connection.connect((err) => {
   console.log("You are now connected...");
 });
 
-app.get("/wild", (req, res) => {
+app.use('/restaurants/:id', express.static(DIST_DIR));
+
+app.get('/wild', (req, res) => {
   const queryStr = "SELECT * FROM restaurants ORDER BY RAND() LIMIT 1";
   connection.query(queryStr, (error, results) => {
     res.json(results[0]);
   });
 });
 
-app.get("/", (req, res) => {
-  console.log("dist dir:", path.resolve(DIST_DIR, "index.html"));
-  res.sendFile(path.resolve(DIST_DIR, "index.html"));
+app.get('/', (req, res) => {
+  res.sendFile(DIST_DIR + '/index.html');
 });
+
+if (process.env.NODE_ENV !== "production") {
+  const webpack = require("webpack");
+  const webpackDevMiddleware = require("webpack-dev-middleware");
+  const config = require("../webpack.dev");
+  const compiler = webpack(config);
+  app.use(
+    webpackDevMiddleware(compiler, {
+      writeToDisk: true,
+      publicPath: config.output.publicPath,
+    })
+  );
+} else {
+  app.use(express.static(DIST_DIR));
+
+  app.get("*", (req, res) => {
+    console.log("dist dir:", path.resolve(DIST_DIR, "index.html"));
+    res.sendFile(path.resolve(DIST_DIR, "index.html"));
+  });
+}
 
 app.set("view engine", "pug");
 

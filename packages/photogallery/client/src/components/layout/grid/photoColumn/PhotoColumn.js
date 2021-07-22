@@ -16,7 +16,7 @@ const PhotoColumn = ({ className, columns, photos, loading, galleryPhotos, photo
     ['center-photobox--topLeft', 'center-photobox--topRight', 'center-photobox--botLeft', 'center-photobox--botMid', 'center-photobox--botRight'],
     ['center-photobox--top', 'center-photobox--top', 'center-photobox--top', 'center-photobox--bottom', 'center-photobox--bottom', 'center-photobox--bottom']
   ];
-  const rightBoxSizes = ['101x101', '101x101', '204x140', '101x101', '101x101'];
+  const rightBoxSizes = ['104x104', '104x104', '204x140', '104x104', '104x104'];
   const leftBoxCtrl = ['left-photobox--top', 'left-photobox--bottom'];
 
   // console.log("PhotoColumn className:", className);

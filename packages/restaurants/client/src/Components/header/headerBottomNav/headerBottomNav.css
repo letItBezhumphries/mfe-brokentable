@@ -1,0 +1,30 @@
+.bottom-bar {
+  border-top: solid 1px rgba(0,0,0,0.08);
+  padding-left: 2rem;
+  height: 2.75rem;
+  line-height: 1.9rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.breadcrumbs {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 2.75rem;
+}
+
+.bottom-bar-breadcrumb {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  text-align: center;
+  height: 100%;
+}
+
+
+.breadcrumb-text {
+  font-size: .9rem;
+  color: rgb(51,51,51);
+}

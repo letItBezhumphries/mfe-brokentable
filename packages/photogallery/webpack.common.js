@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 var SRC_DIR = path.join(__dirname, '/client/src');
 
 module.exports = {
@@ -14,8 +15,8 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-react", "@babel/preset-env"],
-            plugins: ["@babel/plugin-transform-runtime"],
+            presets: ["@babel/react", "@babel/env"],
+            plugins: ["@babel/plugin-transform-runtime", "@babel/plugin-proposal-class-properties"],
           },
         },
       },
@@ -33,4 +34,11 @@ module.exports = {
       }
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+      filename: 'photogallery.html',
+      // inject: 'body'
+    }),
+  ]
 };

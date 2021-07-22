@@ -1,21 +1,23 @@
 import React, { Component } from "react";
 import Container from "react-bootstrap/Container";
 import Radium from "radium";
-import Tabs from "./tabs.jsx";
-import VenueDetails from "./VenueDetails.jsx";
-import Heading from "./heading.jsx";
-import PhotoHeading from "./photoHeading.jsx";
-import DetailsSub from "./detailsSubheading.jsx";
-import Popular from "./popular.jsx";
-import PhotoBase from "./photoBase.jsx";
-import MenuSection from "./menuSection.jsx";
-import Reviews from './reviews.jsx';
-import Description from './description.jsx';
-import TitleHeading from './titleHeading.jsx';
-import TagsSubheading from './tagsSubheading.jsx';
-import Reservations from './reservations.jsx';
-import Orders from './orders.jsx';
-const axios = require("axios");
+import RestaurantNavbar from "./profile-page/restaurantNavbar/restaurantNavbar";
+import VenueDetails from "./profile-page/overview/VenueDetails";
+import Header from "./header/header";
+import PhotoHeading from "./profile-page/header/photoHeading";
+import DetailsSub from "./profile-page/overview/detailsSubheading";
+import Popular from "./profile-page/popular/popular";
+import PhotoBase from "./profile-page/photos/photoBase";
+import MenuSection from "./profile-page/menus/menuSection";
+import Reviews from "./profile-page/reviews/reviews";
+import Description from "./profile-page/overview/description";
+import TitleHeading from "./profile-page/overview/titleHeading";
+import TagsSubheading from "./profile-page/overview/tagsSubheading";
+import Reservations from "./profile-page/secondary/reservations";
+import Orders from "./profile-page/secondary/orders";
+import Spinner from "./spinner/Spinner";
+import Footer from "./footer/footer";
+import axios from "axios";
 
 class Eatery extends Component {
   constructor(props) {
@@ -48,32 +50,23 @@ class Eatery extends Component {
       reviewNum: "0 reviews",
       starAvg: 0,
       tags: [],
-      cost: "$30 and under",
-      // latitude: null,
-      // longitude: null,
-      // errorMessage: "",
+      cost: "$30 and under"
     };
-  }
-
-  // componentDidMount() {
-  //   window.navigator.geolocation.getCurrentPosition(
-  //     position => this.setState({ 
-  //       latitude: position.coords.latitude,
-  //       longitude: position.coords.longitude
-  //     }),
-  //     err => this.setState({
-  //       errorMessage: err.message
-  //     }) 
-  //   );
-  // }
+  };
 
   componentDidMount() {
-    //need to fix this check if process.env === 'development' domain = process.env.DEV_RESTAURANT_URL
-    // otherwise process.env is in production so domain = process.env.PROD_RESTAURANT_URL
+    let RESTAURANTS_API, REVIEWS_API;
+    if (process.env.NODE_ENV === "development") {
+      RESTAURANTS_API = process.env.DEV_RESTAURANT_URL;
+      REVIEWS_API = process.env.DEV_REVIEWS_URL;
+    } else {
+      RESTAURANTS_API = process.env.PROD_RESTAURANT_URL;
+      REVIEWS_API = process.env.PROD_REVIEWS_URL;
+    }
+
     axios
-      .get(process.env.PROD_RESTAURANT_URL, { crossdomain: true })
+      .get(RESTAURANTS_API, { crossdomain: true })
       .then((res) => {
-        // console.log('in EATERY:', res.data);
         var restaurantID = res.data.ID;
         this.setState({
           ID: restaurantID,
@@ -106,12 +99,11 @@ class Eatery extends Component {
       })
       .then(
         (restaurantID) =>
-          axios.get(process.env.PROD_REVIEWS_URL + restaurantID + '/reviews', {
+          axios.get(REVIEWS_API + restaurantID + '/reviews', {
             crossdomain: true,
           })
       )
       .then((res) => {
-        // console.log('reviews api response:', res.data);
         var totalRev = res.data.length;
         var revText = "";
         if (totalRev === 0) {
@@ -125,16 +117,13 @@ class Eatery extends Component {
         var tagStash = {};
         res.data.forEach((element) => {
           starSum += element.overallScore;
-        });
-        var avgStars = starSum / totalRev;
-        res.data.forEach((element) => {
-          var tagParse = element.tags.split(", ");
+          let tagParse = element.tags.split(", ");
           tagParse.forEach((item) => {
             if (Object.keys(tagStash).length < 1) {
               tagStash[item] = 1;
             } else {
               if (tagStash.hasOwnProperty(item)) {
-                tagStash[item] = tagStash[item] + 1;
+                tagStash[item] = tagStash[item] += 1;
               } else {
                 tagStash[item] = 1;
               }
@@ -144,12 +133,12 @@ class Eatery extends Component {
         var tagsRender = [];
         if (Object.keys(tagStash).length > 0 && Object.keys(tagStash).length < 4) {
           for (var key in tagStash) {
-            tagsRender.push(tagParse[key]);
+            tagsRender.push(key);
           }
         } else if (Object.keys(tagStash).length > 3) {
           var tagSort = [];
-          for (var item in tagStash) {
-            tagSort.push([item, tagStash[item]]);
+          for (var tag in tagStash) {
+            tagSort.push([tag, tagStash[tag]]);
           }
           tagSort.sort(function (a, b) {
             return a[1] - b[1];
@@ -160,7 +149,7 @@ class Eatery extends Component {
         }
         this.setState({
           reviewNum: revText,
-          starAvg: avgStars,
+          starAvg: starSum / totalRev,
           tags: tagsRender
         });
       })
@@ -196,44 +185,48 @@ class Eatery extends Component {
       display: "flex",
       justifyContent: "space-between",
       zIndex: "100",
+      // backgroundColor: "lightblue"
     };
 
     const restaurantPageStyles = {
       width: "50%",
       flex: "1 1 50%",
-      marginLeft: "75px",
-      marginRight: "75px",
+      marginLeft: "7.5rem",
+      marginRight: "7.5rem",
+      backgroundColor: "#fff",
+      // backgroundColor: "lightgreen",
+      backgroundAttachment: "scroll",
     };
 
     const venueColumnStyles = {
       flex: "1 1 25%",
-      marginRight: "75px",
+      marginRight: "7.5rem",
     };
 
-    // console.log('latitude:', this.state.latitude, 'longitude:', this.state.longitude);
+    const headerContainerStyles = {
+      padding: "0 0", 
+      margin: "0 0", 
+      width: "100%", 
+      overflowX: "hidden"
+    }
 
     return (
       <Container fluid="true">
-        {/* { this.state.longitude && this.state.latitude ? <Heading long={this.state.longitude} lat={this.state.latitude} /> : null } */}
-        <Heading />
-        <PhotoHeading className="position-relative"/>
+        <Container fluid="true" style={headerContainerStyles}>
+          <Header />
+          { !this.state.ID.length ? <Spinner /> : <PhotoHeading className="position-relative" /> }         
+        </Container>
         <Container style={mainPageStyles} fluid="true">
           <Container style={restaurantPageStyles}>
-            <Tabs>
-              <div label="Overview" href="#overview" eventKey="1">Overview</div>
-              <div label="Photos" href="#photos" eventKey="2">Photos</div>
-              <div label="Popular dishes" href="#popular" eventKey="3">Popular dishes</div>
-              <div label="Menu" href="#menu" eventKey="4">Menu</div>
-              <div label="Reviews" href="#reviews" eventKey="5">Reviews</div>   
-            </Tabs>
+            <RestaurantNavbar />
             <Container fluid="true" data-bs-spy="scroll" data-bs-target="#restaurant-page-nav" data-bs-offset="0" tabIndex="0">
-              <Container style={{ margin: "10px 8px 16px 8px" }} fluid="true">
+              <Container style={{ margin: "1.6rem .8rem 1.6rem .8rem" }} fluid="true" id="overview">
                 <TitleHeading name={this.state.name} />
                 <DetailsSub rev={this.state.reviewNum} starz={this.state.starAvg} tagz={this.state.tags} cuisine={this.state.cuisine} />
                 <TagsSubheading tagz={this.state.tags} fare={this.state.style} />
-              </Container> 
+              </Container>
               <Description description={this.state.description} />
-              <PhotoBase />
+              { !this.state.ID.length ? <Spinner /> : <PhotoBase /> }
               <Popular />
               <MenuSection 
                 menu1={this.state.menuOne} 
@@ -242,7 +235,7 @@ class Eatery extends Component {
                 menu4={this.state.menuFour} 
                 menu5={this.state.menuFive}   
                 />
-              <Reviews />
+              { !this.state.ID.length ? <Spinner /> : <Reviews /> }
             </Container>
           </Container>
 
@@ -252,6 +245,7 @@ class Eatery extends Component {
             <VenueDetails {...minutiae} />
           </Container>
         </Container>
+        <Footer />
       </Container>
     );
   }

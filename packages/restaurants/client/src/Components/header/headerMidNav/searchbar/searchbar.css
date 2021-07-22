@@ -1,0 +1,22 @@
+.mid-bar-search-navbar-right {
+  flex: 1fr;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* margin-right: 1rem; */
+}
+
+.mid-bar-login-buttonbox {
+  /* background-color: peru; */
+}
+
+.mid-bar-button {
+  font-size: 1.4rem;
+}
+
+/*
+.mid-bar-search-buttonbox {
+  background-color: red; 
+}
+*/
+

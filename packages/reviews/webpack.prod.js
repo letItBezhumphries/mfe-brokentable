@@ -2,8 +2,7 @@ const path = require('path');
 const { merge } = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const Dotenv = require('dotenv-webpack');
+const Dotenv = require('dotenv-webpack');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const { ModuleFederationPlugin } = require("webpack").container;
 const commonConfig = require('./webpack.common');
@@ -38,23 +37,23 @@ const prodConfig = {
         ],
         sideEffects: true,
       },
-      {
-        test: /\.scss$/,
-        use: [
-          MiniCssExtractPlugin.loader, 
-          'css-loader', 
-          'sass-loader',   
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: [require("autoprefixer")()],
-              },
-            },
-          },
-        ],
-        sideEffects: true,
-      },
+      // {
+      //   test: /\.scss$/,
+      //   use: [
+      //     MiniCssExtractPlugin.loader, 
+      //     'css-loader', 
+      //     'sass-loader',   
+      //     {
+      //       loader: "postcss-loader",
+      //       options: {
+      //         postcssOptions: {
+      //           plugins: [require("autoprefixer")()],
+      //         },
+      //       },
+      //     },
+      //   ],
+      //   sideEffects: true,
+      // },
     ],
   },
   plugins: [
@@ -64,14 +63,10 @@ const prodConfig = {
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: ['**/*']
     }),
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
-      filename: 'index.html'
+    new Dotenv({
+      path: "./.env",
+      allowEmptyValues: true,
     }),
-    // new Dotenv({
-    //   path: "./.env",
-    //   allowEmptyValues: true,
-    // }),
     new ESLintPlugin({
       fix: true
     }),

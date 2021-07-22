@@ -14,7 +14,7 @@ module.exports = {
           loader: "babel-loader",
           options: {
             presets: ["@babel/preset-react", "@babel/preset-env"],
-            plugins: ["@babel/plugin-transform-runtime", "@babel/plugin-proposal-class-properties"],
+            plugins: ["@babel/plugin-transform-runtime"],
           },
         },
       },
@@ -32,10 +32,12 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    extensions: ["*", ".js", ".jsx"],
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./public/index.html",
-      // filename: "index.html",
       title: "Restaurant Info Page",
       inject: "body"
     }),

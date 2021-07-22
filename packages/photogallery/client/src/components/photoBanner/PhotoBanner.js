@@ -27,11 +27,8 @@ const PhotoBanner = ({ heroImage, loading, getRestaurantPhotos }) => {
     }
   };
 
-  console.log('photos:', heroImage, 'loading:', loading);
   return loading && !heroImage
-    ? (
-    <Spinner />
-      )
+    ? <Spinner />
     : (
     <Fragment>
       <div className="banner-container">

@@ -1,0 +1,28 @@
+.mid-bar-header {
+  background-color: #ffff;
+  height: 6rem;
+}
+
+.logo-box {
+  border-right-style: solid; 
+  border-right-color: rgba(0, 0, 0, 0.08); 
+  border-right-width: .8px;
+  padding-right: 8px;
+  margin-left: 2rem; 
+}
+
+
+.mid-bar-searchbar {
+  flex: 1 0 70%;
+  margin-left: 1rem;
+  padding-right: 1.6rem;
+  height: 100%;
+  line-height: 3rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-right: 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgb(51, 51, 51);
+}

@@ -57,7 +57,10 @@ var randLocation = [
   'New England',
   'Atlantic City',
   'Washington DC',
-  'Philadelphia'
+  'Philadelphia',
+  'Pheonix',
+  'Dallas',
+  'Chicago'
 ];
 
 var userLocation = () => randLocation[Math.floor(Math.random() * (randLocation.length))];
@@ -65,8 +68,8 @@ var userLocation = () => randLocation[Math.floor(Math.random() * (randLocation.l
 var userVipStatus = ['No', 'Yes'];
 var userVip = () => userVipStatus[Math.floor(Math.random() * (userVipStatus.length))];
 
-var userReviewNumber = () => Math.floor(Math.random() * 25);
-
+var userReviewNumber = () => Math.floor(Math.random() * 50);
+// var userReviewNumber = () => Math.floor(Math.random() * 25);
 
 //REVIEWS INFO
 var randReview = [
@@ -111,12 +114,12 @@ var randDate = () => {
 
 //generate tags
 var tagOptions = [
-  'Authentic',
+  'Authentic', 
   'Bar Seating', 'Book the Bar',
   'Cellar', 'Charming', 'Check the Wait', 'Comfort Food', 'Convenient', 'Couples', 'Cozy', 'Craft Beer Selection',
   'Downstairs', 'Dancing',
   'Family Style', 'Farm to Table', 'Fit for Foodies', 'Full Bar',
-  'Good Value', 'Good for Birthdays', 'Good for a Date', 'Great for Brunch',
+  'Good Value', 'Good for Birthdays', 'Good for a Date', 'Great for Brunch', 'Great for outdoor dining',
   'Healthy', 'Historic', 'Hot Spot',
   'Kid-friendly',
   'Live Music', 'Local Ingredients',
@@ -124,6 +127,7 @@ var tagOptions = [
   'Open Kitchen', 'Organic',
   'Prix Fixe Menu',
   'Quick Bite',
+  'Romantic',
   'Scenic View', 'Seasonal', 'Special Occasion',
   'Tapas', 'Tasting Menu',
   'Vegan', 'Vibrant Bar Scene',
@@ -143,7 +147,7 @@ var randTags = () => {
 };
 
 //generate random ratings (with 3s and 4s more likely)
-var randRating = [1, 2, 3, 3, 4, 4, 4, 5];
+var randRating = [1, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5];
 var storedFood;
 var storedService;
 var storedAmbience;
@@ -176,7 +180,7 @@ var randOverall = () => Math.round(((storedFood + storedService + storedAmbience
 var recommendation = () => randOverall() >= 3.0 ? 'Y' : 'N';
 
 //generate random noise rating (with 1s and 2s more likely)
-var randNoiseRatings = [1, 1, 2, 2, 2, 2, 3];
+var randNoiseRatings = [1, 1, 1, 1, 2, 2, 2, 2, 2, 3];
 
 var randNoise = () => randNoiseRatings[Math.floor(Math.random() * (randNoiseRatings.length))];
 
