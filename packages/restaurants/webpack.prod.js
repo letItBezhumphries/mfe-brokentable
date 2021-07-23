@@ -1,16 +1,16 @@
-const path = require('path');
-const { merge } = require('webpack-merge');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
-const ESLintPlugin = require('eslint-webpack-plugin');
+const path = require("path");
+const { merge } = require("webpack-merge");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const Dotenv = require("dotenv-webpack");
+const ESLintPlugin = require("eslint-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
-const commonConfig = require('./webpack.common');
+const commonConfig = require("./webpack.common");
 var DIST_DIR = path.join(__dirname, "/public/dist");
-const packageJson = require('./package.json');
-const TerserPlugin = require('terser-webpack-plugin');
+const packageJson = require("./package.json");
+const TerserPlugin = require("terser-webpack-plugin");
 
-const domain = process.env.PRODUCTION_DOMAIN
+const domain = process.env.PRODUCTION_DOMAIN;
 
 const prodConfig = {
   mode: "production",
@@ -26,8 +26,8 @@ const prodConfig = {
       {
         test: /\.css$/,
         use: [
-          MiniCssExtractPlugin.loader, 
-          'css-loader',
+          MiniCssExtractPlugin.loader,
+          "css-loader",
           {
             loader: "postcss-loader",
             options: {
@@ -35,16 +35,16 @@ const prodConfig = {
                 plugins: [require("autoprefixer")()],
               },
             },
-          }
+          },
         ],
         sideEffects: true,
       },
       {
         test: /\.scss$/,
         use: [
-          MiniCssExtractPlugin.loader, 
-          'css-loader', 
-          'sass-loader',   
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "sass-loader",
           {
             loader: "postcss-loader",
             options: {
@@ -65,10 +65,10 @@ const prodConfig = {
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: ["**/*"],
     }),
-    new Dotenv({
-      path: "./.env",
-      allowEmptyValues: true,
-    }),
+    // new Dotenv({
+    //   path: "./.env",
+    //   allowEmptyValues: true,
+    // }),
     new ESLintPlugin({
       fix: true,
     }),
@@ -78,7 +78,7 @@ const prodConfig = {
         photogallery: `photogallery@${domain}/photogallery/latest/remoteEntry.js`,
         reviews: `reviews@${domain}/reviews/latest/remoteEntry.js`,
       },
-      shared: packageJson.dependencies
+      shared: packageJson.dependencies,
     }),
   ],
 };
