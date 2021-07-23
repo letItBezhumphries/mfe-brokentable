@@ -3,7 +3,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import CustomMenu from "../customMenu";
 import "./regionsMenu.css";
 
-const RegionsMenu = ({ regions, regionSelection, closeMenuClick, onRegionClick, menuShowing }) => {
+const RegionsMenu = ({ regions, closeMenuClick, onRegionClick }) => {
 
   const handleRegionItemClick = (region) => {
     onRegionClick(region);
