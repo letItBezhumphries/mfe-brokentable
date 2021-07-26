@@ -1,27 +1,17 @@
-
 .restaurant-searchform-container {
   box-sizing: border-box;
-  /* top: 0; */
-  /* left: 0; */
-  /* right: 0; */
   overflow: hidden;
   height: 28.8rem;
   width: 100vw;
   z-index: 2000;
-  background-color: rgb(255,255,255);
-  box-shadow: rgba(153,153,153, 0.4) 0px 2px 8px 0px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(153, 153, 153, 0.4) 0px 2px 8px 0px;
   cursor: default;
   display: flex;
   flex-direction: column;
-  /* margin: 0 0; */
-  /* opacity: 1; */
   padding: 0 3.6rem 6.4rem 3.6rem;
   position: absolute;
   line-height: 1.6rem;
-  /* transform-origin: 640px 0px;
-  transition-delay: 0s;
-  transition-duration: .3s;
-  transition-property: opacity;  */
 }
 
 .close-btn-box {
@@ -31,7 +21,6 @@
   padding-top: 16px;
   justify-content: flex-end;
 }
-
 
 .searchform-header-box {
   padding: 16px;
@@ -74,57 +63,67 @@
   height: 100%;
   display: flex;
   justify-content: center;
-  border: 1px solid rgba(0,0,0,.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 4px;
 }
 
 .selector-box {
   flex-basis: 33.3%;
   margin: 0 0;
-  padding: 0 8px;
+  /* padding: 0 8px; */
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  /* background-color: cadetblue; */
 }
-
 
 .party-size-picker {
   order: 1;
-  border-right: 1px solid rgba(0,0,0,0.08);
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 0 8px;
 }
 
 .date-picker {
   order: 2;
+  background-color: cornsilk;
+  padding: 0 0;
 }
 
 .time-picker {
   order: 3;
-  border-left: 1px solid rgba(0,0,0,0.08);
+  border-left: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 0 8px;
 }
 
 .selector-btn {
   height: 100%;
-  background-color: rgb(255,255,255);
-  color: rgba(0,0,0,0.8);
+  background-color: rgb(255, 255, 255);
+  color: rgba(0, 0, 0, 0.8);
   font-size: 1.6rem;
 }
 
+.selector-btn:active,
+.btn:active,
+.btn-primary:active,
+.btn-block:active {
+  border-color: transparent;
+  outline: transparent;
+}
+
 .selector-btn:hover {
-  background-color: rgb(255,255,255);
-  color: rgb(151,151,151);
+  background-color: rgb(255, 255, 255);
+  color: rgb(151, 151, 151);
 }
 
 .selector-btn-text {
-  color: rgba(0,0,0.08);
+  color: rgba(0, 0, 0.08);
 }
-
-
 
 .dtp-selector {
   display: flex;
   justify-content: space-evenly;
-  color: rgb(151,151,151);
+  color: rgb(151, 151, 151);
   background-color: #fff;
   height: 100%;
   width: 100%;
@@ -142,7 +141,6 @@
   margin: 0 10px 0 0;
 }
 
-
 /* search input  */
 .dtp-search-input {
   width: 310px;
@@ -151,8 +149,8 @@
   border-radius: 4px;
   align-items: center;
   /* background-attachment: scroll; */
-  background-color: rgb(255,255,255);
-  border: 1px solid rgba(0,0,0.08);
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgba(0, 0, 0.08);
   display: flex;
   flex-shrink: 0;
   /* background-color: tomato; */
@@ -160,11 +158,11 @@
 
 .dtp-search-formControl {
   width: 100%;
-  background-color: rgb(255,255,255);
+  background-color: rgb(255, 255, 255);
   /* background-color: red; */
   font-size: 16px;
   height: 100%;
-  color: rgb(151,151,151);
+  color: rgb(151, 151, 151);
   line-height: 16px;
   border-color: transparent;
 }
@@ -178,14 +176,14 @@
 .search-submit-btn {
   align-items: flex-start;
   appearance: button;
-  background-color: rgb(218,55,67);
-  border: 1px solid rgb(184,34,45);
+  background-color: rgb(218, 55, 67);
+  border: 1px solid rgb(184, 34, 45);
   border-radius: 4px;
-  color: rgb(255,255,255);
+  color: rgb(255, 255, 255);
   cursor: pointer;
   font-weight: 700;
   font-size: 16px;
-  outline-color: rgb(255,255,255);
+  outline-color: rgb(255, 255, 255);
   margin: 0 0;
   padding: 0 8px;
   text-align: center;
@@ -198,8 +196,29 @@
 }
 
 .search-submit-btn:hover {
-  background-color: rgb(184,34,45);
+  background-color: rgb(184, 34, 45);
 }
 
+.react-datepicker__input-container {
+  height: 100%;
+  width: 100%;
+}
 
+.date,
+.react-datepicker-ignore-outside {
+  width: 120px;
+}
 
+.selector-btn,
+.selector-btn:active,
+.react-datepicker-ignore-onclickoutside,
+.react-datepicker-ignore-onclickoutside:active {
+  border-color: transparent;
+  outline: transparent;
+  height: 100%;
+}
+
+.icon-box {
+  /* background-color: blue; */
+  height: 100%;
+}
