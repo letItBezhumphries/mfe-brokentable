@@ -1,4 +1,4 @@
-require('dotenv').config();
+
 const express = require('express');
 const connectDB = require('../database/index');
 const path = require('path');
@@ -36,6 +36,7 @@ app.use('/api', require('./routes/restaurant'));
 app.use('/restaurants/:id/photos', express.static(DIST_DIR));
 
 if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config({ path: "../.deploy.env"});
   const webpack = require("webpack");
   const webpackDevMiddleware = require("webpack-dev-middleware");
   const config = require("../webpack.dev");
@@ -47,7 +48,8 @@ if (process.env.NODE_ENV !== 'production') {
     })
   );
 
-} else {  
+} else {
+  require('dotenv').config({ path: "../.production.env"});  
   app.use('/', express.static(path.join(__dirname, DIST_DIR)));
 
   app.get('*', (req, res) => {

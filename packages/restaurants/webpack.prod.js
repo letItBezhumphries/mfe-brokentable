@@ -66,7 +66,7 @@ const prodConfig = {
       cleanOnceBeforeBuildPatterns: ["**/*"],
     }),
     new Dotenv({
-      path: "./.env",
+      path: "./.production.env",
       allowEmptyValues: true,
     }),
     new ESLintPlugin({

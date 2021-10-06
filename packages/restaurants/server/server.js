@@ -1,4 +1,3 @@
-require("dotenv").config();
 const express = require("express");
 const http = require("http");
 const createError = require("http-errors");
@@ -28,13 +27,7 @@ app.use(cors());
 let connection;
 
 if (process.env.NODE_ENV !== "production") {
-  connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'eric',
-    password: 'chalon',
-    database: 'restaurant_details'
-  });
-} else {
+  require('dotenv').config({ path: "/opt/restaurants/.deploy.env"});
   connection = mysql.createConnection({
     host: process.env.RDS_HOST,
     port: process.env.RDS_PORT,
@@ -42,6 +35,17 @@ if (process.env.NODE_ENV !== "production") {
     password: process.env.RDS_PASSWORD,
     database: process.env.DB_NAME,
   });
+  console.log('connected to mysql in development!!');
+} else {
+  require('dotenv').config({ path: "/opt/restaurants/.production.env"});
+  connection = mysql.createConnection({
+    host: process.env.RDS_HOST,
+    port: process.env.RDS_PORT,
+    user: process.env.RDS_USERNAME,
+    password: process.env.RDS_PASSWORD,
+    database: process.env.DB_NAME,
+  });
+  console.log('connected to mysql in production!!')
 }
 
 connection.connect((err) => {

@@ -56,7 +56,7 @@ const devConfig = {
       filename: "styles.css"
     }),
     new Dotenv({
-      path: './.env',
+      path: './.deploy.env',
       allowEmptyValues: true
     }),
     new ESLintPlugin({

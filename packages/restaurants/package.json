@@ -8,7 +8,7 @@
     "node": ">=8.10.0"
   },
   "scripts": {
-    "start": "node ./server/server.js",
+    "start": "NODE_ENV=production node ./server/server.js",
     "build": "webpack --config webpack.prod.js",
     "server": "nodemon ./server/server.js",
     "client": "webpack serve --config webpack.dev.js",

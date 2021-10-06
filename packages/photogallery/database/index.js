@@ -1,8 +1,15 @@
-require('dotenv').config();
 const mongoose = require('mongoose');
 const seedData = require('../seed/generateSeedData');
 const seedMongodb = require('../seed/seedMongodb');
 const { dropCollection } = require('./dropCollection');
+
+if (process.env.NODE_ENV !== 'production') {
+  console.log('in development!!');
+  require('dotenv').config({ path: "../.deploy.env"});
+} else {
+  console.log('in production!!');
+  require('dotenv').config({ path: "../.production.env"});
+}
 
 const db = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.DEV_ATLAS_PROJECT}.mongodb.net/${process.env.DATABASE_NAME}?retryWrites=true&w=majority`;
 

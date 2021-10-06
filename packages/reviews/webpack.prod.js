@@ -46,10 +46,10 @@ const prodConfig = {
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: ["**/*"],
     }),
-    // new Dotenv({
-    //   path: "./.env",
-    //   allowEmptyValues: true,
-    // }),
+    new Dotenv({
+      path: "./.production.env",
+      allowEmptyValues: true,
+    }),
     new ESLintPlugin({
       fix: true,
     }),

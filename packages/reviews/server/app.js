@@ -1,9 +1,17 @@
-require('dotenv').config();
 const express = require('express');
 const app = express();
 const cors = require('cors');
 const path = require('path');
 const db = require('./db.js');
+
+if (process.env.NODE_ENV !== "production") {
+  require('dotenv').config({ path: "../.deploy.env"});
+  console.log('running in development!!')
+} else {
+  require('dotenv').config({ path: "../.production.env"});
+  console.log('running in production!!')
+}
+
 
 app.use(cors());
 app.use('/', express.static(path.join(__dirname, '../public/dist')));
