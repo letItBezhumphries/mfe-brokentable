@@ -29,27 +29,25 @@ const PhotosSection = ({ getRestaurantPhotos, setPhotosFilter, name, loading, ph
   };
 
   return loading && !name
-    ? <Spinner />
+    ? (
+    <Spinner />
+      )
     : (
     <Fragment>
       <div className="photos-section">
         <div className="photo-gallery-header">
-          <h2 className="photo-gallery-header__text">
-            {!loading && photos.length ? photos.length : null} Photos
-          </h2>
+          <h2 className="photo-gallery-header__text">{!loading && photos.length ? photos.length : null} Photos</h2>
         </div>
         {filterLabels && (
-            <Tabs onTabClick={handleFilterClick}>
-              <div label="All">All</div>
-              <div label="Interior">Interior</div>
-              <div label="Exterior">Exterior</div>
-              <div label="Food">Food</div>
-              <div label="Drink">Drink</div>
-            </Tabs>
+          <Tabs onTabClick={handleFilterClick}>
+            <div label="All">All</div>
+            <div label="Interior">Interior</div>
+            <div label="Exterior">Exterior</div>
+            <div label="Food">Food</div>
+            <div label="Drink">Drink</div>
+          </Tabs>
         )}
-        <div className="photo-gallery">
-          {!loading && photos.length ? <Grid /> : null}
-        </div>
+        <div className="photo-gallery">{!loading && photos.length ? <Grid /> : null}</div>
       </div>
       {viewModal ? <Modal /> : null}
     </Fragment>

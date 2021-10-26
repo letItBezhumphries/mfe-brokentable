@@ -3,11 +3,17 @@ const http = require("http");
 const createError = require("http-errors");
 const path = require("path");
 const cors = require("cors");
-const mysql = require("mysql");
+const mysql = require("mysql2");
 const errorHandler = require("errorhandler");
 const DIST_DIR = path.join(__dirname, "../public/dist");
 const db = require("./db");
 const app = express();
+
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config({ path: "/opt/restaurants/.deploy.env"});
+} else {
+  require('dotenv').config({ path: "/opt/restaurants/.production.env"});
+}
 
 app.use(
   express.json({
@@ -24,29 +30,13 @@ app.use(cors());
 // Cross-Origin-Embedder-Policy: require-corp
 // Cross-Origin-Opener-Policy: same-origin
 
-let connection;
-
-if (process.env.NODE_ENV !== "production") {
-  require('dotenv').config({ path: "/opt/restaurants/.deploy.env"});
-  connection = mysql.createConnection({
-    host: process.env.RDS_HOST,
-    port: process.env.RDS_PORT,
-    user: process.env.RDS_USERNAME,
-    password: process.env.RDS_PASSWORD,
-    database: process.env.DB_NAME,
-  });
-  console.log('connected to mysql in development!!');
-} else {
-  require('dotenv').config({ path: "/opt/restaurants/.production.env"});
-  connection = mysql.createConnection({
-    host: process.env.RDS_HOST,
-    port: process.env.RDS_PORT,
-    user: process.env.RDS_USERNAME,
-    password: process.env.RDS_PASSWORD,
-    database: process.env.DB_NAME,
-  });
-  console.log('connected to mysql in production!!')
-}
+let connection = mysql.createConnection({
+  host: process.env.RDS_HOST,
+  port: process.env.RDS_PORT,
+  user: process.env.RDS_USERNAME,
+  password: process.env.RDS_PASSWORD,
+  database: process.env.DB_NAME,
+});
 
 connection.connect((err) => {
   if (err) throw err;
@@ -113,6 +103,7 @@ app.get('/', (req, res) => {
 });
 
 if (process.env.NODE_ENV !== "production") {
+  console.log('Server running in development!');
   const webpack = require("webpack");
   const webpackDevMiddleware = require("webpack-dev-middleware");
   const config = require("../webpack.dev");
@@ -121,11 +112,11 @@ if (process.env.NODE_ENV !== "production") {
     webpackDevMiddleware(compiler, {
       writeToDisk: true,
       publicPath: config.output.publicPath,
+      stats: 'errors-only'
     })
   );
 } else {
   app.use(express.static(DIST_DIR));
-
   app.get("*", (req, res) => {
     console.log("dist dir:", path.resolve(DIST_DIR, "index.html"));
     res.sendFile(path.resolve(DIST_DIR, "index.html"));

@@ -6,7 +6,7 @@ const generateRandomCount = function (min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-const generatePhotoSubjectType = (types) => {
+const getRandomPhotoSubjectType = (types) => {
   let randomIndex = generateRandomCount(0, types.length - 1);
   return types[randomIndex];
 };
@@ -29,7 +29,7 @@ const createPhotoCollection = function (
       isFlagged: false,
       restaurant: restaurantId,
       dinedOnDate: faker.date.past(),
-      subjectType: generatePhotoSubjectType(subjectsArr),
+      subjectType: getRandomPhotoSubjectType(subjectsArr),
       description: faker.lorem.sentence(),
       username: faker.name.firstName(),
     });
@@ -55,10 +55,11 @@ const generateRestaurantPhotos = (
     restaurantsArray.push({
       restaurantId: restaurantIds[i].ID,
       restaurantName: restaurantIds[i].name,
-      heroImgSrc: "https://source.unsplash.com/collection/4239193/1450x260/",
+      heroImgSrc: "https://source.unsplash.com/collection/4239193/1450x600/",
       photogallery: photosArray,
     });
   }
+  console.log('restaurants photos:', restaurantsArray);
   return restaurantsArray;
 };
 
@@ -68,5 +69,7 @@ const seedData = generateRestaurantPhotos(
   "https://source.unsplash.com/collection/4239193/526x526/",
   subjects
 );
+
+console.log('seedData', seedData);
 
 module.exports = seedData;

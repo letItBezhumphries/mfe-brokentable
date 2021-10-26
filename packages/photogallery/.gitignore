@@ -27,6 +27,7 @@ bundle.js
 public/dist
 config.json
 *.env
+env-us-west-2
 
 mykey
 
@@ -62,3 +63,7 @@ infrastructure/*_override.tf
 infrastructure/*_override.tf.json
 
 .eslintcache
+*NOTES
+outdated.txt
+
+webpack.prod22.js

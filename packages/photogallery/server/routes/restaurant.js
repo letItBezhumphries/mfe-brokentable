@@ -27,7 +27,7 @@ router.get('/restaurants/:id/photos', async (req, res) => {
     const restaurant = await Restaurant.findOne({
       restaurantId: req.params.id
     });
-    console.log('express api server returns this restaurant:', restaurant);
+    console.log('express api server returns this restaurants photos:', restaurant);
     if (!restaurant) return res.status(400).json({ msg: 'Restaurant was not found.' });
     res.status(200).json(restaurant);
   } catch (err) {

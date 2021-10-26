@@ -8,15 +8,19 @@ const { ModuleFederationPlugin } = require("webpack").container;
 const commonConfig = require("./webpack.common");
 const DIST_DIR = path.join(__dirname, "/public/dist");
 const packageJson = require("./package.json");
-const TerserPlugin = require("terser-webpack-plugin");
+require('dotenv').config({ path: "./.production.env" });
+
+const reviewsPublic = process.env.REVIEWS_PUBLIC;
+
+console.log("here is the reviewsPublic: ", reviewsPublic);
 
 const prodConfig = {
   mode: "production",
   devtool: "source-map",
   output: {
-    filename: "bundle.[contenthash].js",
+    filename: "[name].[contenthash].js",
     path: DIST_DIR,
-    publicPath: "/reviews/latest/",
+    publicPath: `${reviewsPublic}`,
     assetModuleFilename: "assets/[name][contenthash][ext]",
   },
   module: {

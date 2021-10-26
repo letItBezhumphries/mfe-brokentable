@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 let sequelize;
 
 if (process.env.NODE_ENV !== "production") {
-  require('dotenv').config({ path: "../.deploy.env"});
+  require('dotenv').config({ path: "/opt/reviews/.deploy.env"});
   sequelize = new Sequelize(process.env.DB_NAME, process.env.RDS_USERNAME, process.env.RDS_PASSWORD, {
     host: process.env.RDS_HOST,
     port: process.env.RDS_PORT,
@@ -11,7 +11,7 @@ if (process.env.NODE_ENV !== "production") {
   });
   console.log('connected to mysql in development!!')
 } else {
-  require('dotenv').config({ path: "../.production.env"});
+  require('dotenv').config({ path: "/opt/reviews/.production.env"});
   sequelize = new Sequelize(process.env.DB_NAME, process.env.RDS_USERNAME, process.env.RDS_PASSWORD, {
     host: process.env.RDS_HOST,
     port: process.env.RDS_PORT,

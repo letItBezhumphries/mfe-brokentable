@@ -12,7 +12,7 @@ const packageJson = require('./package.json');
 const devConfig = {
   mode: "development",
   output: {
-    filename: "main.js",
+    filename: "[name].main.js",
     path: DIST_DIR,
     publicPath: "http://127.0.0.1:9000/",
     assetModuleFilename: "assets/[name][ext]",
@@ -21,18 +21,24 @@ const devConfig = {
   devServer: {
     // hot: true,
     host: "127.0.0.1",
-    // open: true,
-    contentBase: path.join(__dirname, "public/dist"),
-    index: "index.html",
-    writeToDisk: true,
+    devMiddleware: {
+      index: false,
+      writeToDisk: true,
+    },
     compress: true,
     port: 9000,
     historyApiFallback: {
       index: "index.html",
     },
     proxy: {
-      "/": "http://127.0.0.1:3001/",
-      "/wild": "http://127.0.0.1:3001/wild"
+      "/": {
+        target: "http://127.0.0.1:3001/",
+        changeOrigin: true
+      },
+      "/wild": {
+        target: "http://127.0.0.1:3001/wild",
+        changeOrigin: true
+      }
     }
   },
   module: {

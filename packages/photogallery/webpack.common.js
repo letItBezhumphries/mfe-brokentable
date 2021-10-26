@@ -34,11 +34,15 @@ module.exports = {
       }
     ],
   },
+  resolve: {
+    extensions: ["*", ".js", ".jsx", ".json"],
+  },
   plugins: [
     new HtmlWebpackPlugin({
+      favicon: "./public/favicon.ico",
       template: './public/index.html',
       filename: 'photogallery.html',
-      // inject: 'body'
+      inject: true
     }),
   ]
 };

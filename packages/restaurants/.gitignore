@@ -55,11 +55,13 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
-.env.development
+config.json
+*.env
+env-us-west-2
 
 # next.js build output
 .next
+public/dist/
 
 config.json
 mykey
@@ -96,3 +98,10 @@ infrastructure/*_override.tf
 infrastructure/*_override.tf.json
 
 .eslintcache
+*Notes
+
+stats.json
+.my.cnf
+outdated.txt 
+
+webpack.prod2.js

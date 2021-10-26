@@ -33,13 +33,14 @@ module.exports = {
     ],
   },
   resolve: {
-     extensions: ["*", ".js", ".jsx"],
+     extensions: ["*", ".js", ".jsx", ".json"],
   },
   plugins: [
     new HtmlWebpackPlugin({
+      favicon: "./public/favicon.ico",
       template: "./public/index.html",
       title: "Restaurant Info Page",
-      inject: "body",
+      inject: "body"
     }),
   ],
 };

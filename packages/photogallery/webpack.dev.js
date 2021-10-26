@@ -20,20 +20,30 @@ const devConfig = {
   },
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: path.resolve(__dirname, "./public/dist"),
-    index: 'photogallery.html',
-    writeToDisk: true,
+    devMiddleware: {
+      index: false,
+      writeToDisk: true,
+    },
+    // static: {
+    //   directory: path.join(__dirname, "./public/dist"),
+    //   publicPath: '/'
+    // },
     compress: true,
     host: '127.0.0.1',
     port: 9001,
-    // open: true,
-    // openPage: 'restaurants/aBQtyRWEjX',
+    // open: ['restaurants/aBQtyRWEjx'],
     historyApiFallback: {
       index: "photogallery.html",
     },
     proxy: {
-      "*": "http://127.0.0.1:3003/",
-      "restaurants/:id": "http://127.0.0.1:3003/restaurants/:id",
+      "*": {
+        target: "http://127.0.0.1:3003/",
+        changeOrigin: true
+      },
+      "restaurants/:id": {
+        target: "http://127.0.0.1:3003/restaurants/:id",
+        changeOrigin: true
+      }
     }
   },
   module: {

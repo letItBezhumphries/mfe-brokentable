@@ -10,6 +10,7 @@ async function dropCollection() {
       console.log("error:", err.message);
     }
   }
+  console.log('collections have been dropped!!');
 }
 
 module.exports = {
