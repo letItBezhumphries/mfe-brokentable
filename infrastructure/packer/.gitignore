@@ -1,0 +1,9 @@
+mongoDb-packer.json
+proxy-packer.json
+
+sh/configure_mongodb_ami.sh
+sh/deploy_proxy_ami.sh
+sh/install_proxy_software.sh
+sh/install_photogallery_db_software.sh
+sh/register.sh
+sh/renew.sh

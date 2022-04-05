@@ -36,12 +36,10 @@ const titleStyles = {
   lineHeight: "24px",
   minHeight: "48px",
   textAlign: "center",
-  // paddingTop: "8px",
 }
 
 const cardBodyStyles = {
   borderRadius: "2px",
-  // margin: "0 0 16px 0",
   padding: "8px 16px 16px 16px",
   marginBottom: "16px",
 }

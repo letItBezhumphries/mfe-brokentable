@@ -13,7 +13,7 @@
       "source_ami_filter": {
         "filters": {
           "virtualization-type": "hvm",
-          "name": "ubuntu/images/*ubuntu-bionic-18.04-amd64-server-*",
+          "name": "ubuntu/images/*ubuntu-focal-20.04-amd64-server-*",
           "root-device-type": "ebs"
         },
         "owners": ["099720109477"],
@@ -21,35 +21,29 @@
       },
       "instance_type": "t2.micro",
       "ssh_username": "ubuntu",
-      "ami_name": "packer-restaurant-details-server {{timestamp}}"
+      "ami_name": "packer-svc-reviews {{timestamp}}"
     }
   ],
   "provisioners": [
     {
       "type": "file",
-      "source": "./mykey.pub",
-      "destination": "/tmp/mykey.pub"
+      "source": "../../packages/reviews",
+      "destination": "/tmp"
+    },
+    {
+      "type": "file",
+      "source": "../../packages/multipass/pm2-reviews",
+      "destination": "/tmp"
     },
     {
       "type": "shell",
-      "scripts": ["boot-scripts/install_software.sh"],
+      "scripts": ["sh/install_reviews_software.sh"],
       "execute_command": "{{ .Vars }} sudo -E sh '{{ .Path }}'",
       "pause_before": "10s"
     },
     {
       "type": "shell",
-      "scripts": ["boot-scripts/deploy.sh"],
-      "execute_command": "{{ .Vars }} sudo -E sh '{{ .Path }}'",
-      "pause_before": "10s"
-    },
-    {
-      "type": "shell",
-      "inline_shebang": "#!/bin/bash -e",
-      "inline": [
-        "sleep 10",
-        "cd /home/ubuntu/FEC-Restaurant-Info-Module",
-        "npm install"
-      ],
+      "scripts": ["sh/deploy_reviews_ami.sh"],
       "execute_command": "{{ .Vars }} sudo -E sh '{{ .Path }}'",
       "pause_before": "10s"
     }

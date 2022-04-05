@@ -185,7 +185,6 @@ class Eatery extends Component {
       display: "flex",
       justifyContent: "space-between",
       zIndex: "100",
-      // backgroundColor: "lightblue"
     };
 
     const restaurantPageStyles = {
@@ -194,7 +193,6 @@ class Eatery extends Component {
       marginLeft: "7.5rem",
       marginRight: "7.5rem",
       backgroundColor: "#fff",
-      // backgroundColor: "lightgreen",
       backgroundAttachment: "scroll",
     };
 

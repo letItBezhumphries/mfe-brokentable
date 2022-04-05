@@ -83,6 +83,8 @@ const controlSelectStylesA = {
   display: "block",
   fontSize: "16px",
   lineHeight: "18.4px",
+  // left: "0",
+  textAlign: "left",
   outlineStyle: "none",
   position: "relative",
   ":hover": {
@@ -109,9 +111,9 @@ const controlSelectStylesB = {
   fontWeight: "400",
   fontSize: "16px",
   lineHeight: "18.4px",
-  textAlign: "center",
+  // textAlign: "center",
+  textAlign: "left",
   marginLeft: "8px",
-  // padding: "1px 6px 1px 0",
   outlineStyle: "none",
   position: "relative",
   ":hover": {
@@ -129,7 +131,6 @@ const formRowStylesA = {
   padding: "8px 0 0 0",
   maxHeight: "130px",
   overflow: "hidden",
-  // transition: maxHeight
 }
 
 const formRowStylesB = {
@@ -251,7 +252,7 @@ const Reservations = () => {
           </Form.Group>
         </div>
         <div style={formBtnContainer}>
-          <Button size="lg" style={buttonStyles} block>Find a table</Button>
+          <Button size="lg" style={buttonStyles} block>Find a time</Button>
         </div>
         <div style={cardFooterStyles}>
         <div style={{ alignSelf: "center", paddingTop: "8px", paddingLeft: "6px" }}>

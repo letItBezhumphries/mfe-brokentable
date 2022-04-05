@@ -1,0 +1,37 @@
+# Terraform configuration
+.terraform/
+
+# Terraform state
+terraform.tfstate
+terraform.tfstate.backup
+
+
+.terraform.lock.hcl 
+
+# Terraform variables
+terraform.tfvars
+
+# Public keys
+*.pem
+mykeypair.pub
+
+# Private keys
+mykeypair
+*.key
+
+*.md
+
+mongo-db2/
+mongo-db/
+acme/
+alb/
+elb/
+
+*brokentable2
+
+acme.tf
+alb.tf 
+elb.tf
+
+*ami.tf 
+route53.tf
