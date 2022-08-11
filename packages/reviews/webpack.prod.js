@@ -10,9 +10,9 @@ const DIST_DIR = path.join(__dirname, "/public/dist");
 const packageJson = require("./package.json");
 require('dotenv').config({ path: "./.production.env" });
 
-const reviewsPublic = process.env.REVIEWS_PUBLIC;
+//const reviewsPublic = process.env.REVIEWS_PUBLIC;
 
-console.log("here is the reviewsPublic: ", reviewsPublic);
+//console.log("here is the reviewsPublic: ", reviewsPublic);
 
 const prodConfig = {
   mode: "production",
@@ -20,7 +20,8 @@ const prodConfig = {
   output: {
     filename: "[name].[contenthash].js",
     path: DIST_DIR,
-    publicPath: `${reviewsPublic}`,
+    //publicPath: `${reviewsPublic}`,
+    publicPath: "/reviews/latest/",
     assetModuleFilename: "assets/[name][contenthash][ext]",
   },
   module: {
