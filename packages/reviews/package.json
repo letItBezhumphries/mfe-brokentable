@@ -59,7 +59,6 @@
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.15.6",
     "eslint": "^7.22.0",
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
     "eslint-config-standard": "^16.0.2",
     "eslint-loader": "^4.0.2",
     "eslint-plugin-import": "^2.22.1",
