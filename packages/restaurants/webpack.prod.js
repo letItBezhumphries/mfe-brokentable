@@ -83,8 +83,8 @@ const prodConfig = {
       remotes: {
         //photogallery: `photogallery@${photosPublic}remoteEntry.js`,
         //reviews: `reviews@${reviewsPublic}remoteEntry.js`,
-        photogallery: `photogallery@${domain}/photogallery/latest/remoteEntry.js`,
-        reviews: `reviews@${domain}/reviews/latest/remoteEntry.js`,
+        photogallery: `photogallery@${domain}/photogallery/remoteEntry.js`,
+        reviews: `reviews@${domain}/reviews/remoteEntry.js`,
       },
       shared: packageJson.dependencies,
     }),
