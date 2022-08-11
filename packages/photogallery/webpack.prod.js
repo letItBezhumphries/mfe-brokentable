@@ -10,16 +10,17 @@ const DIST_DIR = path.join(__dirname, '/public/dist');
 const packageJson = require('./package.json');
 require('dotenv').config({ path: "./.production.env" });
 
-const photosPublic = process.env.PHOTOS_PUBLIC;
+// const photosPublic = process.env.PHOTOS_PUBLIC;
 
-console.log("here is the photosPublic: ", photosPublic);
+// console.log("here is the photosPublic: ", photosPublic);
 
 const prodConfig = {
   mode: 'production',
   output: {
     filename: '[name].[contenthash].js',
     path: DIST_DIR,
-    publicPath: `${photosPublic}`,
+    publicPath: "/photogallery/latest/",
+    //publicPath: `${photosPublic}`,
     assetModuleFilename: 'assets/[name][contenthash][ext]'
   },
   devtool: 'source-map',
