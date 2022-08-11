@@ -10,11 +10,12 @@ var DIST_DIR = path.join(__dirname, "/public/dist");
 const packageJson = require("./package.json");
 require('dotenv').config({ path: "./.production.env" });
 
-const photosPublic = process.env.PHOTOS_PUBLIC;
-const detailsPublic = process.env.DETAILS_PUBLIC;
-const reviewsPublic = process.env.REVIEWS_PUBLIC;
+//const photosPublic = process.env.PHOTOS_PUBLIC;
+//const detailsPublic = process.env.DETAILS_PUBLIC;
+//const reviewsPublic = process.env.REVIEWS_PUBLIC;
 
-console.log("here is the photosPublic: ", photosPublic, "; ", "detailsPublic: ", detailsPublic, ": reviewsPublic: ", reviewsPublic);
+//console.log("here is the photosPublic: ", photosPublic, "; ", "detailsPublic: ", detailsPublic, ": reviewsPublic: ", reviewsPublic);
+const domain = process.env.PRODUCTION_DOMAIN;
 
 const prodConfig = {
   mode: "production",
@@ -22,7 +23,8 @@ const prodConfig = {
   output: {
     filename: "[name].[contenthash].js",
     path: DIST_DIR,
-    publicPath: `${detailsPublic}`,
+    publicPath: "/restaurants/latest/",
+//     publicPath: `${detailsPublic}`,
     assetModuleFilename: "assets/[name][contenthash][ext]",
   },
   module: {
@@ -79,8 +81,10 @@ const prodConfig = {
     new ModuleFederationPlugin({
       name: "restaurants",
       remotes: {
-        photogallery: `photogallery@${photosPublic}remoteEntry.js`,
-        reviews: `reviews@${reviewsPublic}remoteEntry.js`,
+        //photogallery: `photogallery@${photosPublic}remoteEntry.js`,
+        //reviews: `reviews@${reviewsPublic}remoteEntry.js`,
+        photogallery: `photogallery@${domain}/photogallery/latest/remoteEntry.js`,
+        reviews: `reviews@${domain}/reviews/latest/remoteEntry.js`,
       },
       shared: packageJson.dependencies,
     }),
