@@ -7,6 +7,7 @@ const mysql = require("mysql2");
 const errorHandler = require("errorhandler");
 const DIST_DIR = path.join(__dirname, "../public/dist");
 const db = require("./db");
+const bodyParser = require('body-parser');
 const app = express();
 
 if (process.env.NODE_ENV !== 'production') {
@@ -15,6 +16,9 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config({ path: "/opt/restaurants/.production.env"});
 }
 
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   express.json({
     extended: false,
