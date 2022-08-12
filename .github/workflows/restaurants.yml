@@ -23,6 +23,9 @@ jobs:
       - run: npm run build
         env:
           PRODUCTION_DOMAIN: ${{ secrets.PRODUCTION_DOMAIN }}
+          PROD_PHOTOS_URL: ${{ secrets.PROD_PHOTOS_URL }}
+          PROD_RESTAURANTS_URL: ${{ secrets.PROD_RESTAURANTS_URL }}
+          PROD_REVIEWS_URL: ${{ secrets.PROD_REVIEWS_URL }}
 
       - uses: shinyinc/action-aws-cli@v1.2
       - run: aws s3 sync public/dist s3://${{ secrets.AWS_S3_BUCKET_NAME }}/restaurants/latest
