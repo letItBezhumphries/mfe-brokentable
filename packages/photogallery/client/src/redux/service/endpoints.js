@@ -3,9 +3,9 @@
 const getRequestURL = () => {
   let RESTAURANT_API_URL;
   if (process.env.NODE_ENV === 'production') {
-    RESTAURANT_API_URL = process.env.PROD_REQUEST_URL;
+    RESTAURANT_API_URL = process.env.PROD_PHOTOS_URL;
   } else if (process.env.NODE_ENV === 'development') {
-    RESTAURANT_API_URL = process.env.DEV_REQUEST_URL;
+    RESTAURANT_API_URL = process.env.DEV_PHOTOS_URL;
   }
   return RESTAURANT_API_URL;
 };
@@ -23,6 +23,6 @@ export const restaurantsURL = () => {
 };
 
 export const getRestaurantURL = (id) => {
-  const url = `${getRequestURL()}/restaurants/${id}`;
+  const url = `${getRequestURL()}/restaurants/${id}/photos`;
   return url;
 };
