@@ -95,9 +95,9 @@ class ReviewsMainModule extends React.Component {
   componentDidMount() {
     let REVIEWS_API;
     if (process.env.NODE_ENV !== 'production') {
-      REVIEWS_API = process.env.DEV_REVIEWS_API_URL;
+      REVIEWS_API = process.env.DEV_REVIEWS_URL;
     } else {
-      REVIEWS_API = process.env.PROD_REVIEWS_API_URL;
+      REVIEWS_API = process.env.PROD_REVIEWS_URL;
     }
     var restaurantId = location.pathname.split('/')[2];
     axios.get(REVIEWS_API + `${restaurantId}/reviews`)
