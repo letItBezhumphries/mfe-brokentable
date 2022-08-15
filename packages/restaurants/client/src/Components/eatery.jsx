@@ -60,8 +60,10 @@ class Eatery extends Component {
       RESTAURANTS_API = process.env.DEV_RESTAURANT_URL;
       REVIEWS_API = process.env.DEV_REVIEWS_URL;
     } else {
-      RESTAURANTS_API = process.env.PROD_RESTAURANT_URL;
-      REVIEWS_API = process.env.PROD_REVIEWS_URL;
+    //  RESTAURANTS_API = process.env.PROD_RESTAURANT_URL;
+    //  REVIEWS_API = process.env.PROD_REVIEWS_URL;
+      RESTAURANTS_API = "https://brokentable.xyz/wild";
+      REVIEWS_API = "https://brokentable.xyz/api/restaurants/";
     }
 
     axios
