@@ -6,7 +6,7 @@ import { getRestaurantURL } from '../service/endpoints';
 export const getRestaurantPhotos = (id) => async (dispatch) => {
   try {
     const apiURL = await getRestaurantURL(id);
-    const res = await axios.get(apiURL);
+    const res = await axios.get(apiURL, { crossOrigin: true });
 
     const payload = {
       restaurantId: res.data.restaurantId,
