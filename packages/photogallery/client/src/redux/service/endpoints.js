@@ -4,7 +4,8 @@ const getRequestURL = () => {
   console.log(`this is the NODE_ENV: ${process.env.NODE_ENV}; \nand this is the photos url: ${process.env.PROD_PHOTOS_URL}`);
   let RESTAURANT_API_URL;
   if (process.env.NODE_ENV === 'production') {
-    RESTAURANT_API_URL = process.env.PROD_PHOTOS_URL;
+  //  RESTAURANT_API_URL = process.env.PROD_PHOTOS_URL;
+    RESTAURANT_API_URL = "https://brokentable.xyz/api";
   } else if (process.env.NODE_ENV === 'development') {
     RESTAURANT_API_URL = process.env.DEV_PHOTOS_URL;
   }
